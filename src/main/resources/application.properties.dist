@@ -1,1 +1,6 @@
 #Copy this file and remove the .dist extension
+spring.datasource.url= *database url*
+spring.datasource.username= *database username*
+spring.datasource.password= *database password*
+spring.datasource.driver-class-name= *driver for database*
+spring.jpa.hibernate.ddl-auto=update *update is usually the desired option*
