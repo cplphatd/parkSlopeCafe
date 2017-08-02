@@ -27,16 +27,16 @@ public class User {
     }
 
     /**
-     * <p>Constructor for <code>User</code> class when retrieving user information from the
-     * database.</p>
+     * <p>Constructor for <code>User</code> class when retrieving userCopy information from the
+     * database. Used as a copy constructor.</p>
      *
-     * @param user object with user information
+     * @param userCopy object with userCopy information
      */
-    public User (User user) {
+    public User (User userCopy) {
 
-        id = user.id;
-        username = user.username;
-        password = user.password;
+        id = userCopy.id;
+        username = userCopy.username;
+        password = userCopy.password;
     }
 
     @Id
