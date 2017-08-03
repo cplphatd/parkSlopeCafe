@@ -1,5 +1,6 @@
 package com.parkslopecafe.controllers;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -8,10 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author David Ryan Alviola
  * @since August 2017
  */
+@Controller
 public class ConsoleController {
 
     @GetMapping("/console")
     public String showAdminConsole() {
-        return "/console/adminConsole";
+        return "console/adminConsole";
     }
 }
