@@ -6,6 +6,19 @@
         <title>@ParkSlopeCafe Console</title>
     </head>
     <body>
-        <h1>Admin Console</h1>
+        <div class="container">
+            <h2>Store Status</h2>
+            <p th:switch="${store.status}">
+                <span th:case="'open'">
+                    <input id="storeStatusOpen" type="checkbox" value="open" checked/>
+                    <input id="storeStatusClosed" type="checkbox" value="closed"/>
+                </span>
+                <span th:case="'closed'">
+                    <input id="storeStatusOpen" type="checkbox" value="open"/>
+                    <input id="storeStatusClosed" type="checkbox" value="closed" checked/>
+                </span>
+            </p>
+
+        </div>
     </body>
 </html>
