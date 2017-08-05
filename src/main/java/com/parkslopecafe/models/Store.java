@@ -2,6 +2,7 @@ package com.parkslopecafe.models;
 
 import javax.persistence.*;
 
+//TODO: javadoc
 /**
  * @author David Ryan Alviola
  * @since August 2017
