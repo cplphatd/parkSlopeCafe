@@ -1,7 +1,5 @@
 package com.parkslopecafe.models;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 import javax.persistence.*;
 
 /**
@@ -20,6 +18,9 @@ public class Store {
     @Column(nullable = false, columnDefinition = "boolean default false")
     private boolean storeIsOpen;
 
+    @Column
+    private String decoration;
+
     public int getId() {
         return id;
     }
@@ -34,5 +35,13 @@ public class Store {
 
     public void setStoreIsOpen(boolean storeIsOpen) {
         this.storeIsOpen = storeIsOpen;
+    }
+
+    public String getDecoration() {
+        return decoration;
+    }
+
+    public void setDecoration(String decoration) {
+        this.decoration = decoration;
     }
 }
