@@ -1,7 +1,7 @@
 package com.parkslopecafe.controllers;
 
 import com.parkslopecafe.models.StoreStatus;
-import com.parkslopecafe.repositories.StoreStatusRepo;
+import com.parkslopecafe.services.StoreStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ConsoleController {
 
     @Autowired
-    StoreStatusRepo storeStatusRepo;
+    StoreStatusService storeStatusService;
 
     @GetMapping("/console")
     public String showAdminConsole(Model model) {
-        StoreStatus storeStatus = storeStatusRepo.findById(1);
+        StoreStatus storeStatus = storeStatusService.getStoreStatus();
         model.addAttribute("storeStatus", storeStatus);
 
         return "console/adminConsole";
