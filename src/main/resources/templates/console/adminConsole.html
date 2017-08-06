@@ -9,15 +9,13 @@
     <body>
         <div class="container">
             <h2>Store Status</h2>
-            <!--<p th:switch="${store.status}">-->
-                <!--<span th:case="'open'">-->
-                    <!--<input id="storeStatusOpen" type="checkbox" value="open" checked/>-->
-                    <!--<input id="storeStatusClosed" type="checkbox" value="closed"/>-->
-                <!--</span>-->
-                <!--<span th:case="'closed'">-->
-                    <!--<input id="storeStatusOpen" type="checkbox" value="open"/>-->
-                    <!--<input id="storeStatusClosed" type="checkbox" value="closed" checked/>-->
-                <!--</span>-->
+            <p th:switch="${storeStatus.storeIsOpen}">
+                <span th:case="${true}">
+                    <p>The store is open</p>
+                </span>
+                <span th:case="${false}">
+                    <p>The store is closed</p>
+                </span>
             </p>
 
         </div>

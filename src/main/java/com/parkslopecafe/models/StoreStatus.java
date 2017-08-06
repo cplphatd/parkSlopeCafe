@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Table (name = "store_status")
-public class Store {
+public class StoreStatus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class Store {
     @Column(nullable = false, columnDefinition = "boolean default false")
     private boolean storeIsOpen;
 
-    @Column
+    @Column(columnDefinition = "string default none")
     private String decoration;
 
     public int getId() {
