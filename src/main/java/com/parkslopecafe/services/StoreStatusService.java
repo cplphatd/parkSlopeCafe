@@ -14,4 +14,16 @@ public class StoreStatusService {
     public StoreStatus getStoreStatus() {
         return storeStatusRepo.findById(1);
     }
+
+    public void changeStoreStatus(boolean storeIsOpen) {
+        StoreStatus storeStatus = storeStatusRepo.findById(1);
+
+        if(storeIsOpen) {
+            storeStatus.setStoreIsOpen(true);
+        } else {
+            storeStatus.setStoreIsOpen(false);
+        }
+
+        storeStatusRepo.save(storeStatus);
+    }
 }

@@ -53,7 +53,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login?logout") // append a query string value
                 .and()
                 .authorizeRequests()
-                .antMatchers("/console") // only authenticated users can view the admin console
+                .antMatchers("/console", "/changeStoreStatus") // only authenticated users can view the admin console
                 .authenticated()
         ;
     }

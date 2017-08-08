@@ -4,6 +4,8 @@
     <head>
         <meta charset="UTF-8"/>
         <title>@ParkSlopeCafe Console</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap-3.3.7-dist/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/css/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css}"/>
         <link rel="stylesheet" th:href="@{/css/background.css}"/>
     </head>
     <body>
@@ -17,7 +19,11 @@
                     <p>The store is closed</p>
                 </span>
             </p>
-
+            <button id="storeClosed" class="btn btn-lg btn-danger" th:value="${false}">Closed</button>
+            <button id="storeOpen" class="btn btn-lg btn-success" th:value="${true}">Open</button>
         </div>
+        <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+        <script th:src="@{/css/bootstrap-3.3.7-dist/js/bootstrap.min.js}"></script>
+        <script th:src="@{/js/adminConsole.js}"></script>
     </body>
 </html>
