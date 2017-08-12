@@ -8,7 +8,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 /**
  * <p>The <code>UsersController</code> class handles navigation to user related pages:
@@ -48,5 +54,17 @@ public class UsersController {
     public String showLoginForm() {
 
         return "users/login";
+    }
+
+    @PostMapping("/console/changePassword")
+    public String updatePassword(@RequestParam(name = "password") String updatedPassword) {
+        User userToUpdate = usersRepository.findOne(1);
+
+        String hashedPassword = encoder.encode(updatedPassword);
+        userToUpdate.setPassword(hashedPassword);
+
+        usersRepository.save(userToUpdate);
+
+        return "forward:/logout";
     }
 }

@@ -2,6 +2,7 @@ package com.parkslopecafe.repositories;
 
 import com.parkslopecafe.models.User;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>The <code>Users</code> interface provides other classes with methods to query the
@@ -11,6 +12,7 @@ import org.springframework.data.repository.CrudRepository;
  * @author David Ryan Alviola
  * @since August 2017
  */
+@Repository
 public interface Users extends CrudRepository<User, Integer>{
 
     /**
