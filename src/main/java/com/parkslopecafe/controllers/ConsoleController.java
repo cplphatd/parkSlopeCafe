@@ -4,7 +4,6 @@ import com.parkslopecafe.models.StoreStatus;
 import com.parkslopecafe.models.User;
 import com.parkslopecafe.repositories.Users;
 import com.parkslopecafe.services.StoreStatusService;
-import com.parkslopecafe.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,7 +36,6 @@ public class ConsoleController {
 
     @GetMapping("/changeStoreStatus/{storeIsOpen}")
     public @ResponseBody void changeStoreStatus(@PathVariable String storeIsOpen) {
-        System.out.println(storeIsOpen);
 
         if(storeIsOpen.equals("true")) {
             storeStatusService.changeStoreStatus(true);
@@ -53,5 +51,11 @@ public class ConsoleController {
         model.addAttribute("user", user);
 
         return "users/changePassword";
+    }
+
+    @GetMapping("/changeStoreDecoration/{decoration}")
+    public @ResponseBody void changeStoreDecoration(@PathVariable String decoration) {
+
+        storeStatusService.changeStoreDecoration(decoration);
     }
 }

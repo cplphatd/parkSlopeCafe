@@ -26,4 +26,12 @@ public class StoreStatusService {
 
         storeStatusRepo.save(storeStatus);
     }
+
+    public void changeStoreDecoration(String decoration) {
+        StoreStatus storeStatus = storeStatusRepo.findById(1);
+
+        storeStatus.setDecoration(decoration);
+
+        storeStatusRepo.save(storeStatus);
+    }
 }
