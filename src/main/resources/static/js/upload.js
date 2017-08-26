@@ -14,4 +14,26 @@ $(document).ready(function() {
             saveUrl.value=fileUrl;
         });
     });
+
+    $("#deleteButton").click(function() {
+        var url = "/deleteBeer/" + $("#beerId").val();
+
+        var request = $.ajax({
+            url: url,
+            type: "GET"
+        });
+
+        request.done(function() {
+            console.log("beer delete ajax success");
+            $(location).attr("href", "../beers");
+        });
+
+        request.fail(function() {
+            console.log("beer delete ajax error");
+        });
+
+        request.always(function() {
+            console.log("beer delete ajax complete");
+        })
+    })
 });

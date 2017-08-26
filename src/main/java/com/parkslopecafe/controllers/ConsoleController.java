@@ -95,7 +95,7 @@ public class ConsoleController {
     }
 
     @GetMapping("/console/beers/createBeer")
-    String showBeerCreationForm(Model model) {
+    public String showBeerCreationForm(Model model) {
         Beer beer = new Beer();
 
         model.addAttribute("beer", beer);
@@ -104,9 +104,15 @@ public class ConsoleController {
     }
 
     @PostMapping("/createBeer")
-    String createBeer(@ModelAttribute Beer beer) {
+    public String createBeer(@ModelAttribute Beer beer) {
         beerService.createBeer(beer);
 
         return "redirect:/console/beers";
+    }
+
+    @GetMapping("/deleteBeer/{id}")
+    @ResponseBody
+    public void deleteBeer(@PathVariable("id") int id) {
+        beerService.deleteBeer(id);
     }
 }

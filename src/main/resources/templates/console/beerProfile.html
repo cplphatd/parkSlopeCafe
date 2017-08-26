@@ -29,6 +29,7 @@
                 <button class="form-control btn btn-success">Update Profile</button>
                 <button id="deleteButton" type="button" class="form-control btn btn-danger">Delete Beer</button>
             </form>
+            <input id="beerId" th:value="${beer.id}" hidden=""/>
         </div>
         <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
         <script th:src="@{/css/bootstrap-3.3.7-dist/js/bootstrap.min.js}"></script>

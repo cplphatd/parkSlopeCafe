@@ -31,4 +31,8 @@ public class BeerService {
 
         beerRepo.save(beer);
     }
+
+    public void deleteBeer(int id) {
+        beerRepo.delete(id);
+    }
 }
