@@ -20,4 +20,8 @@ public class BeerService {
     public Beer getBeerById(int id) {
         return beerRepo.findOne(id);
     }
+
+    public void saveBeer(Beer beer) {
+        beerRepo.save(beer);
+    }
 }

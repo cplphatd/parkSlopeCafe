@@ -4,14 +4,16 @@ body {
 }
 
 .beerContainer {
-    max-width: 330px;
+    max-width: 50%;
     padding: 15px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .beerInput {
     color: black;
     margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 .inStock {
@@ -27,6 +29,6 @@ body {
     height: 330px;
 }
 
-#uploadBtn {
-    margin: 5px;
+#deleteButton {
+    margin-top: 5px;
 }

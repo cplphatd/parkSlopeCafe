@@ -9,9 +9,7 @@ import com.parkslopecafe.services.StoreStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -81,4 +79,19 @@ public class ConsoleController {
 
         return "console/beerProfile";
     }
+
+    @PostMapping("/updateBeer/{id}")
+    public String updateBeerProfile(@ModelAttribute Beer beer, @PathVariable("id") int id) {
+        Beer updatedBeer = beerService.getBeerById(id);
+
+        updatedBeer.setName(beer.getName());
+        updatedBeer.setCategory(beer.getCategory());
+        updatedBeer.setDescription(beer.getDescription());
+        updatedBeer.setPicture(beer.getPicture());
+
+        beerService.saveBeer(updatedBeer);
+
+        return "redirect:/console/beers/{id}";
+    }
+
 }

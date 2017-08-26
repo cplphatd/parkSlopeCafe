@@ -12,17 +12,22 @@
     <body>
         <div class="beerContainer">
             <h1><span th:text="${beer.name}"></span> Profile</h1>
-            <form class="beerForm form-group">
+            <form class="beerForm form-group" th:action="${'/updateBeer/' + beer.id}" th:method="POST" th:object="${beer}">
                 <label for="beerName">Name</label>
-                <input id="beerName" name="beerName" class="beerInput form-control" th:value="${beer.name}"/>
+                <input id="beerName" name="beerName" class="beerInput form-control"
+                       th:value="${beer.name}" th:field="*{name}"/>
                 <label for="beerType">Category</label>
-                <input id="beerType" name="beerType" class="beerInput form-control" th:value="${beer.category}"/>
+                <input id="beerType" name="beerType" class="beerInput form-control"
+                       th:value="${beer.category}" th:field="*{category}"/>
                 <label for="beerDescription">Description</label>
                 <textarea id="beerDescription" name="beerDescription" class="beerInput form-control"
-                          th:text="${beer.description}"></textarea>
-                <button type="button" id="uploadBtn" class="btn btn-primary">Upload Image</button>
-                <img id="beerPicture" src="https://cdn.filestackcontent.com/rounded_corners/HoZ9sOn2RweEAI94vIFy"/>
-                <input id="beerPictureUrl" class="beerInput" value="" hidden=""/>
+                          th:text="${beer.description}" th:field="*{description}"></textarea>
+                <button type="button" id="uploadBtn" class="btn btn-primary form-control">Upload Image</button>
+                <img id="beerPicture" class="beerInput"
+                     th:src="${beer.picture}"/>
+                <input id="beerPictureUrl" th:value="${beer.picture}" th:field="*{picture}" hidden=""/>
+                <button class="form-control btn btn-success">Update Profile</button>
+                <button id="deleteButton" type="button" class="form-control btn btn-danger">Delete Beer</button>
             </form>
         </div>
         <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
