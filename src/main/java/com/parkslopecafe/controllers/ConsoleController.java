@@ -1,15 +1,17 @@
 package com.parkslopecafe.controllers;
 
+import com.parkslopecafe.models.Beer;
 import com.parkslopecafe.models.StoreStatus;
 import com.parkslopecafe.models.User;
 import com.parkslopecafe.repositories.Users;
+import com.parkslopecafe.services.BeerService;
 import com.parkslopecafe.services.StoreStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>The <code>ConsoleController</code> class handles requests regarding the admin console.</p>
@@ -22,6 +24,9 @@ public class ConsoleController {
 
     @Autowired
     StoreStatusService storeStatusService;
+
+    @Autowired
+    BeerService beerService;
 
     @Autowired
     Users userRepository;
@@ -57,5 +62,62 @@ public class ConsoleController {
     public @ResponseBody void changeStoreDecoration(@PathVariable String decoration) {
 
         storeStatusService.changeStoreDecoration(decoration);
+    }
+
+    @GetMapping("/console/beers")
+    public String showBeerConsole(Model model) {
+        List<Beer> beerList = beerService.getBeerList();
+        model.addAttribute("beerList", beerList);
+
+        return "console/beerConsole";
+    }
+
+    @GetMapping("/console/beers/{id}")
+    public String getBeerProfile(Model model, @PathVariable("id") int id) {
+        Beer beer = beerService.getBeerById(id);
+        model.addAttribute("beer", beer);
+
+        return "console/beerProfile";
+    }
+
+    @PostMapping("/updateBeer/{id}")
+    public String updateBeerProfile(@ModelAttribute Beer beer, @PathVariable("id") int id) {
+        Beer updatedBeer = beerService.getBeerById(id);
+
+        updatedBeer.setName(beer.getName());
+        updatedBeer.setCategory(beer.getCategory());
+        updatedBeer.setDescription(beer.getDescription());
+        updatedBeer.setPicture(beer.getPicture());
+
+        beerService.updateBeer(updatedBeer);
+
+        return "redirect:/console/beers/{id}";
+    }
+
+    @GetMapping("/console/beers/createBeer")
+    public String showBeerCreationForm(Model model) {
+        Beer beer = new Beer();
+
+        model.addAttribute("beer", beer);
+
+        return "console/beerForm";
+    }
+
+    @PostMapping("/createBeer")
+    public String createBeer(@ModelAttribute Beer beer) {
+        beerService.createBeer(beer);
+
+        return "redirect:/console/beers";
+    }
+
+    @GetMapping("/deleteBeer/{id}")
+    public @ResponseBody void deleteBeer(@PathVariable("id") int id) {
+        beerService.deleteBeer(id);
+    }
+
+    @GetMapping("/updateStock/{id}/{isInStock}")
+    public @ResponseBody void updateStockStatus(@PathVariable("id") int id,
+                                                @PathVariable("isInStock") boolean isInStock) {
+        beerService.updateStockStatus(id, isInStock);
     }
 }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>@ParkSlopeCafe Beer Profile</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap-3.3.7-dist/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/css/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css}"/>
+        <link rel="stylesheet" th:href="@{/css/beerConsole.css}"/>
+        <link rel="stylesheet" th:href="@{/css/background.css}"/>
+    </head>
+    <body>
+        <div class="beerContainer">
+            <h1><span th:text="${beer.name}"></span> Profile</h1>
+            <form class="beerForm form-group" th:action="${'/updateBeer/' + beer.id}" th:method="POST" th:object="${beer}">
+                <label for="beerName">Name</label>
+                <input id="beerName" name="beerName" class="beerInput form-control"
+                       th:value="${beer.name}" th:field="*{name}"/>
+                <label for="beerType">Category</label>
+                <input id="beerType" name="beerType" class="beerInput form-control"
+                       th:value="${beer.category}" th:field="*{category}"/>
+                <label for="beerDescription">Description</label>
+                <textarea id="beerDescription" name="beerDescription" class="beerInput form-control"
+                          th:text="${beer.description}" th:field="*{description}"></textarea>
+                <button type="button" id="uploadBtn" class="btn btn-primary form-control">Upload Image</button>
+                <img id="beerPicture" class="beerInput"
+                     th:src="${beer.picture}"/>
+                <input id="beerPictureUrl" th:value="${beer.picture}" th:field="*{picture}" hidden=""/>
+                <button class="form-control btn btn-success">Update Profile</button>
+                <button id="deleteButton" type="button" class="form-control btn btn-danger">Delete Beer</button>
+            </form>
+            <input id="beerId" th:value="${beer.id}" hidden=""/>
+        </div>
+        <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+        <script th:src="@{/css/bootstrap-3.3.7-dist/js/bootstrap.min.js}"></script>
+        <script src="https://static.filestackapi.com/v3/filestack.js"></script>
+        <script th:src="@{/js/upload.js}"></script>
+    </body>
+</html>
