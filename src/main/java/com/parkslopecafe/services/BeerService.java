@@ -35,4 +35,12 @@ public class BeerService {
     public void deleteBeer(int id) {
         beerRepo.delete(id);
     }
+
+    public void updateStockStatus(int id, boolean isInStock) {
+        Beer beer = beerRepo.findOne(id);
+
+        beer.setInStock(isInStock);
+
+        beerRepo.save(beer);
+    }
 }

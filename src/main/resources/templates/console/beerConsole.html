@@ -12,17 +12,17 @@
     <body>
         <div class="beerContainer">
             <h1>Beer List</h1>
-            <div id="beerList" th:each="beer : ${beerList}">
+            <div id="beerListItem" th:each="beer : ${beerList}">
                 <!--for some reason the parameter is 'inStock' vs 'isInStock' like the model-->
                 <h4 th:switch="${beer.inStock}">
                     <p th:case="${true}">
-                        <input type="checkbox" class="inStockStatus" checked="true"/>
+                        <input th:id="${beer.id}" type="checkbox" class="inStockStatus" checked="true"/>
                         <a class="inStock" th:href="@{'/console/beers/' + ${beer.id}}">
                             <span th:text="${beer.name}"></span>
                         </a>
                     </p>
                     <p th:case="${false}">
-                        <input type="checkbox" class="inStockStatus"/>
+                        <input th:id="${beer.id}" type="checkbox" class="inStockStatus"/>
                         <a class="outOfStock" th:href="@{'/console/beers/' + ${beer.id}}">
                             <span th:text="${beer.name}"></span>
                         </a>

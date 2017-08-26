@@ -111,8 +111,13 @@ public class ConsoleController {
     }
 
     @GetMapping("/deleteBeer/{id}")
-    @ResponseBody
-    public void deleteBeer(@PathVariable("id") int id) {
+    public @ResponseBody void deleteBeer(@PathVariable("id") int id) {
         beerService.deleteBeer(id);
+    }
+
+    @GetMapping("/updateStock/{id}/{isInStock}")
+    public @ResponseBody void updateStockStatus(@PathVariable("id") int id,
+                                                @PathVariable("isInStock") boolean isInStock) {
+        beerService.updateStockStatus(id, isInStock);
     }
 }
