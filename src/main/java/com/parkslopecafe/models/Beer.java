@@ -21,7 +21,7 @@ public class Beer {
     @Column
     private String category;
 
-    @Column(columnDefinition = "String default https://cdn.filestackcontent.com/rounded_corners/HoZ9sOn2RweEAI94vIFy")
+    @Column
     private String description;
 
     @Column

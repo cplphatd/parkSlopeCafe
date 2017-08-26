@@ -21,7 +21,14 @@ public class BeerService {
         return beerRepo.findOne(id);
     }
 
-    public void saveBeer(Beer beer) {
+    public void updateBeer(Beer beer) {
+        beerRepo.save(beer);
+    }
+
+    public void createBeer(Beer beer) {
+        beer.setPicture("https://cdn.filestackcontent.com/rounded_corners/HoZ9sOn2RweEAI94vIFy");
+        beer.setInStock(true);
+
         beerRepo.save(beer);
     }
 }

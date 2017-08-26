@@ -89,9 +89,24 @@ public class ConsoleController {
         updatedBeer.setDescription(beer.getDescription());
         updatedBeer.setPicture(beer.getPicture());
 
-        beerService.saveBeer(updatedBeer);
+        beerService.updateBeer(updatedBeer);
 
         return "redirect:/console/beers/{id}";
     }
 
+    @GetMapping("/console/beers/createBeer")
+    String showBeerCreationForm(Model model) {
+        Beer beer = new Beer();
+
+        model.addAttribute("beer", beer);
+
+        return "console/beerForm";
+    }
+
+    @PostMapping("/createBeer")
+    String createBeer(@ModelAttribute Beer beer) {
+        beerService.createBeer(beer);
+
+        return "redirect:/console/beers";
+    }
 }
