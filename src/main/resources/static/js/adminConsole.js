@@ -103,5 +103,28 @@ $(document).ready(function() {
         }
     });
 
+    //Event listener and ajax for message
+    $("#message").keyup(function() {
+        var url = "/updateMessage/" + $("#message").val();
+        console.log(url);
 
+        var request;
+
+        request = $.ajax({
+            url: url,
+            type: "GET"
+        });
+
+        request.done(function() {
+            console.log("message ajax success");
+        });
+
+        request.fail(function() {
+            console.log("message ajax error");
+        });
+
+        request.always(function() {
+            console.log("message ajax complete")
+        });
+    });
 });

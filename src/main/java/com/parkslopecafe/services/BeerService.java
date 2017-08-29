@@ -26,7 +26,10 @@ public class BeerService {
     }
 
     public void createBeer(Beer beer) {
-        beer.setPicture("https://cdn.filestackcontent.com/rounded_corners/HoZ9sOn2RweEAI94vIFy");
+
+        if(beer.getPicture() == null || beer.getPicture().equals("")) {
+            beer.setPicture("https://cdn.filestackcontent.com/rounded_corners/HoZ9sOn2RweEAI94vIFy");
+        }
         beer.setInStock(true);
 
         beerRepo.save(beer);
