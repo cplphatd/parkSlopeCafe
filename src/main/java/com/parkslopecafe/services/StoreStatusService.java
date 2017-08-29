@@ -34,4 +34,12 @@ public class StoreStatusService {
 
         storeStatusRepo.save(storeStatus);
     }
+
+    public void updateMessage(String message) {
+        StoreStatus storeStatus = storeStatusRepo.findById(1);
+
+        storeStatus.setMessage(message);
+
+        storeStatusRepo.save(storeStatus);
+    }
 }

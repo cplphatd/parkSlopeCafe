@@ -24,8 +24,10 @@
                     th:value="${false}">Closed</button>
             <button id="storeOpen" class="btn btn-lg btn-success btn-block col-xs-12 col-sm-10 col-m-8 col-lg-6 col-xl-4"
                     th:value="${true}">Open</button>
+            <h2>Enter a message:</h2>
+            <textarea type="text" id="message"></textarea>
             <h2 class="adminConsole-heading">Decorations</h2>
-            <ul class="col-xs-12 col-sm-10 col-m-8 col-lg-6 col-xl-4">
+            <ul id="decorations" class="col-xs-12 col-sm-10 col-m-8 col-lg-6 col-xl-4">
                 <input type="checkbox" class="checkbox" th:value="'newYears'"/>
                     <li>New Year's</li>
                 <input type="checkbox" class="checkbox" th:value="'valentines'"/>

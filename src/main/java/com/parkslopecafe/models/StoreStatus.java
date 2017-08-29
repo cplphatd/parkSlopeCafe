@@ -22,6 +22,9 @@ public class StoreStatus {
     @Column(columnDefinition = "string default none")
     private String decoration;
 
+    @Column(length = 1000)
+    private String message;
+
     public int getId() {
         return id;
     }
@@ -44,5 +47,13 @@ public class StoreStatus {
 
     public void setDecoration(String decoration) {
         this.decoration = decoration;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

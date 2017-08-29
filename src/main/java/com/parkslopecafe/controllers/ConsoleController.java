@@ -120,4 +120,9 @@ public class ConsoleController {
                                                 @PathVariable("isInStock") boolean isInStock) {
         beerService.updateStockStatus(id, isInStock);
     }
+
+    @GetMapping("/updateMessage/{message}")
+    public @ResponseBody void updateMessage(@PathVariable("message") String message) {
+        storeStatusService.updateMessage(message);
+    }
 }
