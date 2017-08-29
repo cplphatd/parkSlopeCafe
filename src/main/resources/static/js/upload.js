@@ -4,7 +4,7 @@ $(document).ready(function() {
     const saveUrl = document.getElementById("beerPictureUrl");
 
     $("#uploadBtn").click(function() {
-        console.log("click");
+
         client.pick({
             accept: 'image/*',
             lang: "ja"
