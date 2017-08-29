@@ -13,16 +13,16 @@ $(document).ready(function() {
         });
 
         request.done(function() {
-            console.log("success");
+            console.log("store status ajax success");
             location.reload();
         });
 
         request.fail(function() {
-            console.log("error");
+            console.log("store status ajax error");
         });
 
         request.always(function() {
-            console.log("done");
+            console.log("store status ajax complete");
         });
     });
 
@@ -63,7 +63,6 @@ $(document).ready(function() {
         if($(this).is(":checked")) {
             var decoration = $(this).val();
             url += decoration;
-            console.log(url);
 
             request = $.ajax({
                 url: url,
@@ -104,5 +103,28 @@ $(document).ready(function() {
         }
     });
 
+    //Event listener and ajax for message
+    $("#message").keyup(function() {
+        var url = "/updateMessage/" + $("#message").val();
+        console.log(url);
 
+        var request;
+
+        request = $.ajax({
+            url: url,
+            type: "GET"
+        });
+
+        request.done(function() {
+            console.log("message ajax success");
+        });
+
+        request.fail(function() {
+            console.log("message ajax error");
+        });
+
+        request.always(function() {
+            console.log("message ajax complete")
+        });
+    });
 });
