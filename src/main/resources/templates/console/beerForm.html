@@ -14,18 +14,21 @@
     <h1><span th:text="${beer.name}"></span> Profile</h1>
     <form class="beerForm form-group" action="/createBeer" th:method="POST" th:object="${beer}">
         <label for="beerName">Name</label>
-        <input id="beerName" name="beerName" class="beerInput form-control"
+        <span th:if="${errorMessages[0] != null}"><p id="errorMsg" th:text="${errorMessages[0]}"></p></span>        <input id="beerName" name="beerName" class="beerInput form-control"
                th:value="${beer.name}" th:field="*{name}"/>
         <label for="beerType">Category</label>
+        <span th:if="${errorMessages[1] != null}"><p id="errorMsg" th:text="${errorMessages[1]}"></p></span>
         <input id="beerType" name="beerType" class="beerInput form-control"
                th:value="${beer.category}" th:field="*{category}"/>
         <label for="beerDescription">Description</label>
+        <span th:if="${errorMessages[2] != null}"><p id="errorMsg" th:text="${errorMessages[2]}"></p></span>
         <textarea id="beerDescription" name="beerDescription" class="beerInput form-control"
                   th:text="${beer.description}" th:field="*{description}"></textarea>
         <button type="button" id="uploadBtn" class="btn btn-primary form-control">Upload Image</button>
         <img id="beerPicture" class="beerInput"
              src="https://cdn.filestackcontent.com/rounded_corners/HoZ9sOn2RweEAI94vIFy"/>
         <button class="form-control btn btn-success">Create Beer</button>
+        <input id="beerPictureUrl" th:value="${beer.picture}" th:field="*{picture}" hidden=""/>
         <input type="hidden" th:attr="name=${_csrf.parameterName},value=${_csrf.token}"/>
     </form>
 </div>

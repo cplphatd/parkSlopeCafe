@@ -2,6 +2,7 @@ package com.parkslopecafe.services;
 
 import com.parkslopecafe.models.Beer;
 import com.parkslopecafe.repositories.BeerRepo;
+import com.parkslopecafe.validators.StringValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,9 @@ public class BeerService {
     @Autowired
     BeerRepo beerRepo;
 
+    @Autowired
+    StringValidator stringValidator;
+
     public List<Beer> getBeerList() {
         return beerRepo.findAll();
     }
@@ -22,6 +26,7 @@ public class BeerService {
     }
 
     public void updateBeer(Beer beer) {
+
         beerRepo.save(beer);
     }
 
@@ -30,6 +35,7 @@ public class BeerService {
         if(beer.getPicture() == null || beer.getPicture().equals("")) {
             beer.setPicture("https://cdn.filestackcontent.com/rounded_corners/HoZ9sOn2RweEAI94vIFy");
         }
+
         beer.setInStock(true);
 
         beerRepo.save(beer);
