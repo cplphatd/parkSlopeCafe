@@ -3,6 +3,7 @@ package com.parkslopecafe.controllers;
 import com.parkslopecafe.models.User;
 import com.parkslopecafe.repositories.Roles;
 import com.parkslopecafe.repositories.Users;
+import com.parkslopecafe.validators.StringValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -31,6 +32,9 @@ public class UsersController {
     private PasswordEncoder encoder;
     private Roles rolesRepository;
 
+    @Autowired
+    StringValidator stringValidator;
+
     /**
      * <p>Constructor for the <code>UsersController</code> class.</p>
      *
@@ -57,8 +61,14 @@ public class UsersController {
     }
 
     @PostMapping("/console/changePassword")
-    public String updatePassword(@RequestParam(name = "password") String updatedPassword) {
+    public String updatePassword(@RequestParam(name = "password") String updatedPassword, Model model) {
         User userToUpdate = usersRepository.findOne(1);
+        boolean passedValidation = stringValidator.checkLengthOfString(updatedPassword, 8);
+
+        if(!passedValidation) {
+            model.addAttribute("user", userToUpdate);
+            return "users/changePassword";
+        }
 
         String hashedPassword = encoder.encode(updatedPassword);
         userToUpdate.setPassword(hashedPassword);
