@@ -12,6 +12,10 @@ public class StringValidator {
     }
 
     public boolean checkForSpecialCharacters(String string) {
-        return(StringUtils.containsNone(string, "<>#%{}|^~[]`"));
+        return (StringUtils.containsNone(string, "<>#%{}|^~[]`"));
+    }
+
+    public boolean checkLengthOfString(String string, int length) {
+        return (string.length() >= length);
     }
 }

@@ -1,5 +1,21 @@
 $(document).ready(function() {
 
+    //Verify no special characters (need to find more efficient way to write this)
+    var containsSpecialChars = function(str){
+        return (str.indexOf("<") !== -1
+            || str.indexOf(">") !== -1
+            || str.indexOf("#") !== -1
+            || str.indexOf("%") !== -1
+            || str.indexOf("{") !== -1
+            || str.indexOf("}") !== -1
+            || str.indexOf("|") !== -1
+            || str.indexOf("^") !== -1
+            || str.indexOf("~") !== -1
+            || str.indexOf("[") !== -1
+            || str.indexOf("]") !== -1
+            || str.indexOf("`") !== -1);
+    };
+
     //Ajax request sent when storeClosed button clicked
     $("#storeClosed").click(function () {
 
@@ -105,10 +121,15 @@ $(document).ready(function() {
 
     //Event listener and ajax for message
     $("#message").keyup(function() {
-        var url = "/updateMessage/" + $("#message").val();
-        console.log(url);
-
+        var message = $("#message").val();
+        var url = "/updateMessage/" + message;
         var request;
+
+        if(containsSpecialChars(message)) {
+            $("#specialCharacters").removeClass("hidden");
+        } else {
+            $("#specialCharacters").addClass("hidden");
+        }
 
         request = $.ajax({
             url: url,

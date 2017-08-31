@@ -177,6 +177,15 @@ public class ConsoleController {
 
     @GetMapping("/updateMessage/{message}")
     public @ResponseBody void updateMessage(@PathVariable("message") String message) {
-        storeStatusService.updateMessage(message);
+        boolean passedValidation = stringValidator.checkForSpecialCharacters(message);
+
+        if(passedValidation) {
+            storeStatusService.updateMessage(message);
+        }
+    }
+
+    @GetMapping("/updateMessage")
+    public @ResponseBody void updateMessage() {
+        storeStatusService.updateMessage(null);
     }
 }
