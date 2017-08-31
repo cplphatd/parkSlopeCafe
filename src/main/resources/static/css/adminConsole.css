@@ -65,6 +65,10 @@ li {
     margin-bottom: 10%;
 }
 
+#specialCharacters {
+    color: red;
+}
+
 #storeOpen {
     margin-bottom: 10%;
 }
