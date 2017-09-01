@@ -13,7 +13,8 @@
     <body>
         <nav th:include="fragments/navigation :: navbar"></nav>
         <div class="beerContainer">
-            <h1>Beer List</h1>
+            <h1>ビールリスト</h1>
+            <div>赤のビールがありません。</div>
             <div id="beerListItem" th:each="beer : ${beerList}">
                 <!--for some reason the parameter is 'inStock' vs 'isInStock' like the model-->
                 <h4 th:switch="${beer.inStock}">

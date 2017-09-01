@@ -13,7 +13,7 @@
 <body>
 <nav th:include="fragments/navigation :: navbar"></nav>
 <div class="beerContainer">
-    <h1><span th:text="${beer.name}"></span> Profile</h1>
+    <h1>ビールが加える</h1>
     <form class="beerForm form-group" action="/createBeer" th:method="POST" th:object="${beer}">
         <label for="beerName">Name</label>
         <span th:if="${errorMessages[0] != null}"><p id="errorMsg" th:text="${errorMessages[0]}"></p></span>        <input id="beerName" name="beerName" class="beerInput form-control"
