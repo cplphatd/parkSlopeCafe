@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>@ParkSlopeCafe Navbar</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap-3.3.7-dist/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/css/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css}"/>
+        <link rel="stylesheet" th:href="@{/css/navbar.css}"/>
+    </head>
+    <body>
+        <div th:fragment="navbar">
+            <header>
+                <button class="hamburger">&#9776;</button>
+                <button class="cross">&#735;</button>
+            </header>
+            <div class="menu">
+                <ul>
+                    <a href="/console"><li>ホーム</li></a>
+                    <a href="/console/beers"><li>ビール</li></a>
+                    <a href="/console/changePassword"><li>パスワード</li></a>
+                </ul>
+            </div>
+        </div>
+        <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+        <script th:src="@{/css/bootstrap-3.3.7-dist/js/bootstrap.min.js}"></script>
+        <script th:src="@{/js/navbar.js}"></script>
+    </body>
 </html>
