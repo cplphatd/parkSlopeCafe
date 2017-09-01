@@ -7,9 +7,11 @@
         <link rel="stylesheet" th:href="@{/css/bootstrap-3.3.7-dist/css/bootstrap.min.css}"/>
         <link rel="stylesheet" th:href="@{/css/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css}"/>
         <link rel="stylesheet" th:href="@{/css/adminConsole.css}"/>
+        <link rel="stylesheet" th:href="@{/css/navbar.css}"/>
         <link rel="stylesheet" th:href="@{/css/background.css}"/>
     </head>
     <body>
+        <nav th:include="fragments/navigation :: navbar"></nav>
         <div class="adminConsole">
             <h2 class="adminConsole-heading">Store Status</h2>
             <p th:switch="${storeStatus.storeIsOpen}">
@@ -49,6 +51,7 @@
         </div>
         <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
         <script th:src="@{/css/bootstrap-3.3.7-dist/js/bootstrap.min.js}"></script>
+        <script th:src="@{/js/navbar.js}"></script>
         <script th:src="@{/js/adminConsole.js}"></script>
     </body>
 </html>
