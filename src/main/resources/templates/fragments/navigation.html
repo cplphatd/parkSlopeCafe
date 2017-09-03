@@ -19,6 +19,12 @@
                     <a href="/console"><li>ホーム</li></a>
                     <a href="/console/beers"><li>ビール</li></a>
                     <a href="/console/changePassword"><li>パスワード</li></a>
+                    <a href="javascript:{}" onclick="document.getElementById('logout').submit();">
+                        <li>ログアウト</li>
+                        <form id="logout" th:action="@{/logout}" th:method="POST">
+                            <input type="hidden" value="Sign Out" readonly="true"/>
+                        </form>
+                    </a>
                 </ul>
             </div>
         </div>
