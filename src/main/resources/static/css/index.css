@@ -1,0 +1,19 @@
+/*font-family: 'Alegreya SC', serif;*/
+/*font-family: 'Abril Fatface', cursive;*/
+/*font-family: 'IM Fell English SC', serif;*/
+/*font-family: 'Gravitas One', cursive;*/
+/*font-family: 'IM Fell DW Pica SC', serif;*/
+
+.beerPic {
+    display: block;
+    margin: auto;
+    max-width: 80%;
+}
+
+.item {
+    text-align: center;
+}
+
+#message {
+    text-align: center;
+}
