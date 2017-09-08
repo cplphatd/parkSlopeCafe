@@ -13,7 +13,10 @@
     </head>
     <body>
         <h4 id="message" th:text="${storeStatus.message}"></h4>
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <div id="logoContainer" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <img id="logo" th:src="@{/img/PSC.png}"/>
+        </div>
+        <div id="myCarousel" class="carousel slide col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" data-ride="carousel">
             <ol class="carousel-indicators"></ol>
             <div class="carousel-inner"></div>
             <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
