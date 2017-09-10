@@ -21,13 +21,13 @@
                 <h4 th:switch="${beer.inStock}">
                     <p th:case="${true}">
                         <input th:id="${beer.id}" type="checkbox" class="inStockStatus" checked="true"/>
-                        <a class="inStock" th:href="@{'/console/beers/' + ${beer.id}}">
+                        <a th:id="${beer.id} + 'link'" class="inStock" th:href="@{'/console/beers/' + ${beer.id}}">
                             <span th:text="${beer.name}"></span>
                         </a>
                     </p>
                     <p th:case="${false}">
                         <input th:id="${beer.id}" type="checkbox" class="inStockStatus"/>
-                        <a class="outOfStock" th:href="@{'/console/beers/' + ${beer.id}}">
+                        <a th:id="${beer.id} + 'link'" class="outOfStock" th:href="@{'/console/beers/' + ${beer.id}}">
                             <span th:text="${beer.name}"></span>
                         </a>
                     </p>
