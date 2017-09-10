@@ -41,12 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll() // Anyone can go to the login page
                 .and()
                 .authorizeRequests()
-                .antMatchers("/",
-                        "/search",
-                        "/register",
-                        "/charities",
-                        "/donate",
-                        "/logout") // anyone can see these pages
+                .antMatchers("/") // anyone can see these pages
                 .permitAll()
                 .and()
                 .logout()
