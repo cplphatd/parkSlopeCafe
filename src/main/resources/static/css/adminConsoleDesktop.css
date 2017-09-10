@@ -1,0 +1,11 @@
+@media (min-width: 800px) {
+
+    .adminConsole {
+        max-width: 30%;
+    }
+
+    .decoration {
+        text-align: center;
+    }
+
+}
