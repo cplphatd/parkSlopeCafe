@@ -15,17 +15,10 @@
         <nav th:include="fragments/navigation :: navbar"></nav>
         <div class="adminConsole">
             <h2 class="adminConsole-heading">Store Status</h2>
-            <p th:switch="${storeStatus.storeIsOpen}">
-                <span th:case="${true}">
-                    <p class="center">The store is open</p>
-                </span>
-                <span th:case="${false}">
-                    <p class="center">The store is closed</p>
-                </span>
-            </p>
-            <button id="storeClosed" class="btn btn-lg btn-danger btn-block col-xs-12 col-sm-10 col-m-8 col-lg-6 col-xl-4"
+            <p id="storeStatusMsg"></p>
+            <button id="storeClosed" class=" storeStatus btn btn-lg btn-danger btn-block col-xs-12 col-sm-10 col-m-8 col-lg-6 col-xl-4"
                     th:value="${false}">Closed</button>
-            <button id="storeOpen" class="btn btn-lg btn-success btn-block col-xs-12 col-sm-10 col-m-8 col-lg-6 col-xl-4"
+            <button id="storeOpen" class="storeStatus btn btn-lg btn-success btn-block col-xs-12 col-sm-10 col-m-8 col-lg-6 col-xl-4"
                     th:value="${true}">Open</button>
             <h2>Enter a message:</h2>
             <p class="hidden" id="specialCharacters">Please do not use special characters.</p>
