@@ -8,6 +8,7 @@
         <link rel="stylesheet" th:href="@{/css/bootstrap-3.3.7-dist/css/bootstrap.min.css}"/>
         <link rel="stylesheet" th:href="@{/css/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css}"/>
         <link rel="stylesheet" th:href="@{/css/adminConsole.css}"/>
+        <link rel="stylesheet" th:href="@{/css/adminConsoleDesktop.css}"/>
         <link rel="stylesheet" th:href="@{/css/navbar.css}"/>
         <link rel="stylesheet" th:href="@{/css/background.css}"/>
     </head>
@@ -24,23 +25,23 @@
             <p class="hidden" id="specialCharacters">Please do not use special characters.</p>
             <textarea type="text" id="message" th:text="${storeStatus.message}"></textarea>
             <h2 class="adminConsole-heading">Decorations</h2>
-            <ul id="decorations" class="col-xs-12 col-sm-10 col-m-8 col-lg-6 col-xl-4">
+            <ul id="decorations" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <input type="checkbox" class="checkbox" th:value="'newYears'"/>
-                    <li>New Year's</li>
+                    <li class="decoration">New Year's</li>
                 <input type="checkbox" class="checkbox" th:value="'valentines'"/>
-                    <li>Valentine's Day</li>
+                    <li class="decoration">Valentine's Day</li>
                 <input type="checkbox" class="checkbox" th:value="'goldenWeek'"/>
-                    <li>Golden Week</li>
+                    <li class="decoration">Golden Week</li>
                 <input type="checkbox" class="checkbox" th:value="'obon'"/>
-                    <li>Obon</li>
+                    <li class="decoration">Obon</li>
                 <input type="checkbox" class="checkbox" th:value="'parkslopeAnniversary'"/>
-                    <li>Parkslope Cafe Anniversary</li>
+                    <li class="decoration">Parkslope Cafe Anniversary</li>
                 <input type="checkbox" class="checkbox" th:value="'halloween'"/>
-                    <li>Halloween</li>
+                    <li class="decoration">Halloween</li>
                 <input type="checkbox" class="checkbox" th:value="'christmas'"/>
-                    <li>Christmas</li>
+                    <li class="decoration">Christmas</li>
                 <input type="checkbox" class="checkbox" th:value="'birthday'"/>
-                    <li>Birthday</li>
+                    <li class="decoration">Birthday</li>
             </ul>
         </div>
         <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
