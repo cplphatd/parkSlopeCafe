@@ -1,0 +1,45 @@
+body {
+    font-family: 'Abril Fatface', cursive;
+}
+
+.beerPic {
+    display: block;
+    margin: auto;
+    max-width: 80%;
+}
+
+.item {
+    text-align: center;
+}
+
+.pscBtn {
+    margin-top: 5%;
+    color: black;
+}
+
+#beerContainer {
+    text-align: center;
+    height: 100vh;
+}
+
+#decoration {
+    margin-top: 5%;
+}
+
+#logo {
+    max-width: 100%;
+}
+
+#logoContainer {
+    height: 100vh;
+    text-align: center;
+}
+
+#message {
+    text-align: center;
+}
+
+#myCarousel {
+    margin-top: 10%;
+    height: 80vh;
+}
