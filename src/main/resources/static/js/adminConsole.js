@@ -16,55 +16,65 @@ $(document).ready(function() {
             || str.indexOf("`") !== -1);
     };
 
-    //Ajax request sent when storeClosed button clicked
-    $("#storeClosed").click(function () {
-
-        var storeStatus = $(this).val();
-
-        var url = "/changeStoreStatus/" + storeStatus;
-
-        var request = $.ajax({
-            url: url,
-            type: "GET"
-        });
-
-        request.done(function() {
-            console.log("store status ajax success");
-            location.reload();
-        });
-
-        request.fail(function() {
-            console.log("store status ajax error");
-        });
-
-        request.always(function() {
-            console.log("store status ajax complete");
-        });
+    //Gets store status on page load
+    var storeStatusRequest = $.ajax({
+        url: "/getStoreStatus.json"
     });
 
-    //Ajax request sent when storeOpen button is clicked
-    $("#storeOpen").click(function () {
+    storeStatusRequest.done(function(storeStatus) {
+
+        if(storeStatus.storeIsOpen === true) {
+            $("#storeStatusMsg").html("Store is open");
+        } else {
+            $("#storeStatusMsg").html("Store is closed");
+        }
+
+        //Checks decoration checkbox if it is active
+        $(".checkbox").each(function() {
+            if($(this).val() === storeStatus.decoration) {
+                $(this).prop("checked", true);
+            }
+        });
+
+        console.log("get store status ajax success")
+    });
+
+    storeStatusRequest.fail(function() {
+        console.log("get store status ajax failure");
+    });
+
+    storeStatusRequest.always(function() {
+        console.log("get store status ajax complete");
+    });
+
+    //Ajax request sent when storeClosed button clicked
+    $(".storeStatus").click(function () {
 
         var storeStatus = $(this).val();
 
-        var url = "/changeStoreStatus/" + storeStatus;
+        var url = "/changeStoreStatus/" + storeStatus + ".json";
 
         var request = $.ajax({
-            url: url,
-            type: "GET"
+            url: url
         });
 
-        request.done(function() {
-            console.log("store status ajax success");
-            location.reload();
+        request.done(function(storeStatus) {
+
+            if(storeStatus.storeIsOpen === true) {
+                $("#storeStatusMsg").html("Store is open");
+            } else {
+                $("#storeStatusMsg").html("Store is closed");
+            }
+
+            console.log("change store status ajax success");
         });
 
         request.fail(function() {
-            console.log("store status ajax error");
+            console.log("change store status ajax error");
         });
 
         request.always(function() {
-            console.log("store status ajax done");
+            console.log("change store status ajax complete");
         });
     });
 
@@ -77,12 +87,10 @@ $(document).ready(function() {
 
         //If checked, the decoration is passed as a path variable, otherwise "none" is passed
         if($(this).is(":checked")) {
-            var decoration = $(this).val();
-            url += decoration;
+            url += $(this).val();
 
             request = $.ajax({
-                url: url,
-                type: "GET"
+                url: url
             });
 
             request.done(function() {
@@ -101,8 +109,7 @@ $(document).ready(function() {
             console.log(url);
 
             request = $.ajax({
-                url: url,
-                type: "GET"
+                url: url
             });
 
             request.done(function() {
@@ -132,8 +139,7 @@ $(document).ready(function() {
         }
 
         request = $.ajax({
-            url: url,
-            type: "GET"
+            url: url
         });
 
         request.done(function() {

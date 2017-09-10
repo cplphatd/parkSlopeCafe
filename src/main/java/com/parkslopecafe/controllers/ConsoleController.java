@@ -48,14 +48,23 @@ public class ConsoleController {
         return "console/adminConsole";
     }
 
-    @GetMapping("/changeStoreStatus/{storeIsOpen}")
-    public @ResponseBody void changeStoreStatus(@PathVariable String storeIsOpen) {
+    @GetMapping("/getStoreStatus.json")
+    public @ResponseBody
+    StoreStatus getStoreStatus() {
+        return storeStatusService.getStoreStatus();
+    }
+
+    @GetMapping("/changeStoreStatus/{storeIsOpen}.json")
+    public @ResponseBody
+    StoreStatus changeStoreStatus(@PathVariable String storeIsOpen) {
 
         if(storeIsOpen.equals("true")) {
             storeStatusService.changeStoreStatus(true);
         } else {
             storeStatusService.changeStoreStatus(false);
         }
+
+        return storeStatusService.getStoreStatus();
     }
 
     @GetMapping("console/changePassword")
