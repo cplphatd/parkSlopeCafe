@@ -9,27 +9,53 @@
         <link rel="stylesheet" th:href="@{/css/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css}"/>
         <link rel="stylesheet" th:href="@{/css/background.css}"/>
         <link rel="stylesheet" th:href="@{/css/index.css}"/>
-        <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Alegreya+SC|Gravitas+One|IM+Fell+DW+Pica+SC|IM+Fell+English+SC" rel="stylesheet"/>
+        <link rel="stylesheet" th:href="@{/css/indexDesktop.css}"/>
+        <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet"/>
     </head>
     <body>
-        <h4 id="message" th:text="${storeStatus.message}"></h4>
+        <nav class="navbar navbar-dark fixed-top">
+            <h4 id="message" th:text="${storeStatus.message}"></h4>
+        </nav>
         <div id="logoContainer" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <img id="logo" th:src="@{/img/PSC.png}"/>
+            <h1>PARK SLOPE CAFE</h1>
+            <p th:switch="${storeStatus.storeIsOpen}">
+                <span th:case="${true}" th:text="開けていますよ。カモン！"></span>
+                <span th:case="${false}" th:text="閉まっています。すみません。"></span>
+            </p>
+            <a href="#beer" class="anchorNav"><button class="btn btn-secondary btn-lg pscBtn">メニュー</button></a>
+            <div id="decoration" th:switch="${storeStatus.decoration}">
+                <span th:case="${'newYears'}" th:text="新年おめでとうご！"></span>
+                <span th:case="${'valentines'}" th:text="ハッピーバレンタインデー！"></span>
+                <span th:case="${'goldenWeek'}" th:text="ハッピーゴールデンウィーク！"></span>
+                <span th:case="${'obon'}" th:text="お盆だね。行ってらっしゃい！"></span>
+                <span th:case="${'parkslopeAnniversary'}"
+                      th:text="パークスロープカフェの記念日よ！"></span>
+                <span th:case="${'halloween'}" th:text="ハッピーハロウィーン！"></span>
+                <span th:case="${'christmas'}" th:text="メリークリスマス！"></span>
+                <span th:case="${'birthday'}" th:text="誕生日おめでとう！"></span>
+            </div>
         </div>
-        <div id="myCarousel" class="carousel slide col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" data-ride="carousel">
-            <ol class="carousel-indicators"></ol>
-            <div class="carousel-inner"></div>
-            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+        <div id="beerContainer">
+            <h1>ビール</h1>
+            <a id="beer"></a>
+            <div id="myCarousel" class="carousel slide col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"
+                 data-ride="carousel" data-interval="false">
+                <ol class="carousel-indicators"></ol>
+                <div class="carousel-inner"></div>
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
         </div>
         <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
         <script th:src="@{/css/bootstrap-3.3.7-dist/js/bootstrap.min.js}"></script>
+        <script th:src="@{/js/jquery.popupoverlay.js}"></script>
         <script th:src="@{/js/index.js}"></script>
     </body>
 </html>

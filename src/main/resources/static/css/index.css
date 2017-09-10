@@ -1,8 +1,6 @@
-/*font-family: 'Alegreya SC', serif;*/
-/*font-family: 'Abril Fatface', cursive;*/
-/*font-family: 'IM Fell English SC', serif;*/
-/*font-family: 'Gravitas One', cursive;*/
-/*font-family: 'IM Fell DW Pica SC', serif;*/
+body {
+    font-family: 'Abril Fatface', cursive;
+}
 
 .beerPic {
     display: block;
@@ -14,12 +12,27 @@
     text-align: center;
 }
 
+.pscBtn {
+    margin-top: 5%;
+    color: black;
+}
+
+#beerContainer {
+    text-align: center;
+    height: 100vh;
+}
+
+#decoration {
+    margin-top: 5%;
+}
+
 #logo {
     max-width: 100%;
 }
 
 #logoContainer {
     height: 100vh;
+    text-align: center;
 }
 
 #message {
@@ -27,5 +40,6 @@
 }
 
 #myCarousel {
-    height: 100vh;
+    margin-top: 10%;
+    height: 80vh;
 }

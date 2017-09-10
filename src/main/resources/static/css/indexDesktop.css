@@ -1,0 +1,9 @@
+@media (min-width: 800px) {
+    .beerPic {
+        max-height: 30vh;
+    }
+
+    #logo {
+        max-height: 50vh;
+    }
+}
